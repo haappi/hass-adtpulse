@@ -70,23 +70,23 @@ async def async_setup_entry(
             "ADT's Pulse service returned NO zones (sensors) for site %s:", site.id
         )
         return
-    entities = [
-        ADTPulseZoneSensor(coordinator, site, zone_id, trouble_indicator)
-        for zone_id in site.zones_as_dict.keys()
-        for trouble_indicator in (True, False)
-    ]
+    # entities = [
+    #     ADTPulseZoneSensor(coordinator, site, zone_id, trouble_indicator)
+    #     for zone_id in site.zones_as_dict.keys()
+    #     for trouble_indicator in (True, False)
+    # ]
 
-    _ = (
-        migrate_entity_name(
-            hass,
-            site,
-            "binary_sensor",
-            entity.unique_id,
-        )
-        for entity in entities
-    )
-
-    async_add_entities(entities)
+    # _ = (
+    #     migrate_entity_name(
+    #         hass,
+    #         site,
+    #         "binary_sensor",
+    #         entity.unique_id,
+    #     )
+    #     for entity in entities
+    # )
+    #
+    # async_add_entities(entities)
 
 
 class ADTPulseZoneSensor(ADTPulseEntity, BinarySensorEntity):

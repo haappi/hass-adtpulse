@@ -192,13 +192,13 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
     async def async_alarm_arm_home(self, code: str | None = None) -> None:
         """Send arm home command."""
         await self._perform_alarm_action(
-            self._site.async_arm_home(), STATE_ALARM_ARMED_HOME
+            self._site.async_arm_home(force_arm=True), STATE_ALARM_ARMED_HOME
         )
 
     async def async_alarm_arm_away(self, code: str | None = None) -> None:
         """Send arm away command."""
         await self._perform_alarm_action(
-            self._site.async_arm_away(), STATE_ALARM_ARMED_AWAY
+            self._site.async_arm_away(force_arm=True), STATE_ALARM_ARMED_AWAY
         )
 
     # Pulse can arm away or home with bypass
@@ -211,7 +211,7 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
     async def async_alarm_arm_night(self, code: str | None = None) -> None:
         """Send arm night command."""
         await self._perform_alarm_action(
-            self._site.async_arm_night(), STATE_ALARM_ARMED_NIGHT
+            self._site.async_arm_night(force_arm=True), STATE_ALARM_ARMED_NIGHT
         )
 
     async def async_alarm_arm_force_stay(self) -> None:

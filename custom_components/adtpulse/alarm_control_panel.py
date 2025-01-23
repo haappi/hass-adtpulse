@@ -181,6 +181,7 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
 
     async def _check_if_system_armable(self, new_state: str) -> None:
         """Checks if we can arm the system, raises exceptions if not."""
+        return
         if self.state != STATE_ALARM_DISARMED:
             raise HomeAssistantError(
                 f"Cannot set alarm to {new_state} "

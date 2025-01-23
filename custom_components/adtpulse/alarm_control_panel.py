@@ -208,7 +208,7 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
             self._site.async_arm_away(force_arm=True), FORCE_ARM
         )
 
-    async def async_alarm_arm_night(self) -> None:
+    async def async_alarm_arm_night(self, code: str | None = None) -> None:
         """Send arm night command."""
         await self._perform_alarm_action(
             self._site.async_arm_night(), STATE_ALARM_ARMED_NIGHT

@@ -161,7 +161,7 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
         if not self._gateway.is_online:
             self._assumed_state = action
         elif action == STATE_ALARM_DISARMED:
-            self._assumed_state = STATE_ALARM_DISARMING
+            self._assumed_state = STATE_ALARM_DISARMED
         else:
             self._assumed_state = STATE_ALARM_ARMING
         self.async_write_ha_state()

@@ -165,7 +165,10 @@ class ADTPulseAlarm(ADTPulseEntity, alarm.AlarmControlPanelEntity):
         else:
             self._assumed_state = STATE_ALARM_ARMING
         self.async_write_ha_state()
-        result = await arm_disarm_func
+        try:
+            result = await arm_disarm_func
+        except Exception as ex:
+            LOG.error("Could not %s ADT Pulse alarm: %s", action, ex)
         if not result:
             LOG.warning("Could not %s ADT Pulse alarm", action)
         self._assumed_state = None
